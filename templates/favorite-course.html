@@ -2,13 +2,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-        {% extends "base.html" %}
 
-    <title>{% block page_title %}Favorite Course {% endblock %}</title>
+    <title>Favorite Course </title>
 
 
 </head>
 <body>
+        {% extends "base.html" %}
+
 {% block page_content %}
 
 <p>You entered your favorite course as {{ courses }}</p>
