@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% extends "base.html" %}
+    <link rel="stylesheet" href="/static/contact.css">
+    <title>{% block page_title %}Contact {% endblock %}</title>
+
+
+</head>
+<body>
+
+
+{% block page_content %}
+    {% if form_submitted %}
+        <div class="submitMessage">
+            <h2>Thank You For Completing The Form </h2>
+        </div>
+        <div class="submitMessage">
+            <p>First Name: {{ request.form.get('first_name') }} </p>
+        </div>
+        <div class="submitMessage">
+            <p>Last Name: {{ request.form.get('last_name') }} </p>
+        </div>
+        <div class="submitMessage">
+            <p>Email: {{ request.form.get('email') }} </p>
+        </div>
+        <div class="submitMessage">
+            <p>Phone: {{ request.form.get('phone') }} </p>
+        </div>
+        <p><a href="{{ url_for('contact') }}">Complete form again</a></p>
+
+    {% else %}
+        <form action="{{ url_for('contact') }}" method="post">
+            <div class="form">
+                <div class="formGroup">
+                    <label for="inputFirstName">First Name</label>
+                    <input type="text" class="form-control" id="inputFirstName" name="first_name"
+                           placeholder="First Name">
+                </div>
+                <div class="formGroup">
+                    <label for="inputLastName">Last Name</label>
+                    <input type="text" class="form-control" id="inputLastName" name="last_name" placeholder="Last Name">
+                </div>
+                <div class="formGroup">
+                    <label for="inputEmail">Email</label>
+                    <input type="email" class="form-control" id="inputEmail" name="email" placeholder="Email">
+                </div>
+                <div class="formGroup">
+                    <label for="inputPhone">Phone Number</label>
+                    <input type="text" class="form-control" id="inputPhone" name="phone" placeholder="444-444-4444">
+                </div>
+                <div class="formGroup">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </div>
+        </form>
+    {% endif %}
+{% endblock %}
+
+</body>
+</html>
